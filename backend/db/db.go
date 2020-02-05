@@ -20,6 +20,8 @@ func Connect() {
 		log.Printf("DB Connection ok!")
 	}
 
+	db.AutoMigrate(&User{}, &Record{})
+
 	DB = db
 
 }

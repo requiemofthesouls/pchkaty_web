@@ -15,4 +15,6 @@ func main() {
 	r := router.SetupRouter()
 	_ = r.Run(":8080")
 
+	defer db.DB.Close()
+
 }
