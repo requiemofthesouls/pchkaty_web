@@ -25,9 +25,9 @@ var record db.Record
 func Pong(c *gin.Context) {
 	err := db.DB.DB().Ping()
 	if err != nil {
-		c.JSON(http.StatusOK, gin.H{"ping": "pong"})
-	} else {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "ping is not ok. connection with database lost!"})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"ping": "pong"})
 	}
 }
 
@@ -72,9 +72,9 @@ func CreateUser(c *gin.Context) {
 			Patronymic: json.Patronymic}
 
 		db.DB.Create(&userObj)
+		c.JSON(http.StatusCreated, gin.H{"status": "created"})
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"status": "created"})
 }
 
 func GetRecord(c *gin.Context) {
