@@ -16,6 +16,7 @@ func SetupRouter() *gin.Engine {
 	router.GET("/ping", controller.Pong)
 
 	router.GET("/user", controller.GetUser)
+	router.GET("/user/:id", controller.GetUser)
 	router.POST("/user", controller.CreateUser)
 
 	router.GET("/records", controller.GetRecord)

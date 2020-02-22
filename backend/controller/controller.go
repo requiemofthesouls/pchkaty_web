@@ -38,7 +38,7 @@ func Main(c *gin.Context) {
 // Returns all users if not `user_id` specified.
 // If you pass `user_id` query param it finds user with this user_id in database.
 func GetUser(c *gin.Context) {
-	qsId := c.Query("id")
+	qsId := c.Param("id")
 	var usersObj *gorm.DB
 
 	if qsId == "" {
