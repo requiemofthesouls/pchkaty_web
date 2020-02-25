@@ -13,7 +13,7 @@ import (
 
 func init() {
 	config.LoadEnv()
-	db.Connect()
+	db.InitDB()
 }
 
 type resp struct {

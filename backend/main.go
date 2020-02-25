@@ -6,15 +6,13 @@ import (
 	"pchkaty_web/backend/router"
 )
 
-func init() {
-	config.LoadEnv()
-	db.Connect()
-}
-
 func main() {
-	r := router.SetupRouter()
-	_ = r.Run(":8080")
+	config.LoadEnv()
 
-	defer db.DB.Close()
+	DB := db.InitDB()
+	defer DB.Close()
+
+	r := router.SetupRouter(DB)
+	_ = r.Run(":8080")
 
 }

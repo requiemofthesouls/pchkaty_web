@@ -9,9 +9,8 @@ import (
 	"pchkaty_web/backend/config"
 )
 
-var DB *gorm.DB
+func InitDB() *gorm.DB {
 
-func Connect() {
 	db, err := gorm.Open("postgres", config.PostgresAddr)
 
 	if err != nil {
@@ -22,6 +21,5 @@ func Connect() {
 
 	db.AutoMigrate(&User{}, &Record{})
 
-	DB = db
-
+	return db
 }
