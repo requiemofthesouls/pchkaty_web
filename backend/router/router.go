@@ -1,17 +1,33 @@
 package router
 
 import (
+	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"os"
 	"pchkaty_web/backend/controller"
 	"pchkaty_web/backend/controller/user"
+
+	"github.com/getsentry/sentry-go"
+	sentrygin "github.com/getsentry/sentry-go/gin"
 )
+
+func initSentry() {
+	if err := sentry.Init(sentry.ClientOptions{
+		Dsn: os.Getenv("SENTRY_DSN"),
+	}); err != nil {
+		fmt.Printf("Sentry initialization failed: %v\n", err)
+	}
+}
 
 // SetupRouter setup routing here
 func SetupRouter(db *gorm.DB) *gin.Engine {
+	initSentry()
+
 	router := gin.Default()
 	router.Use(cors.Default())
+	router.Use(sentrygin.New(sentrygin.Options{}))
 
 	// Users
 	userAPI := user.InitUserAPI(db)

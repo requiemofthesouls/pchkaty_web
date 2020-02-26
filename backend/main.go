@@ -6,9 +6,11 @@ import (
 	"pchkaty_web/backend/router"
 )
 
-func main() {
+func init() {
 	config.LoadEnv()
+}
 
+func main() {
 	DB := db.InitDB()
 	defer DB.Close()
 
