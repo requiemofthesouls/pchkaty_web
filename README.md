@@ -1,1 +1,1 @@
-Just yet another blog on React, Golang and Postgres.
+Just yet another blog on Svelte, Golang and Postgres.
