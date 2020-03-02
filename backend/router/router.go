@@ -27,7 +27,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 
 	router := gin.Default()
 	router.Use(cors.Default())
-	router.Use(sentrygin.New(sentrygin.Options{}))
+	router.Use(sentrygin.New(sentrygin.Options{Repanic: true}))
 
 	// Users
 	userAPI := user.InitUserAPI(db)
