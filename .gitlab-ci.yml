@@ -1,0 +1,46 @@
+stages:
+  - test
+  - build
+  - deploy
+
+
+build latest:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - echo $CI_REGISTRY/$CI_PROJECT_PATH
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:latest .
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:latest
+  after_script:
+    - docker run $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:latest
+  only:
+    - master
+
+build tags:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - echo $CI_REGISTRY/$CI_PROJECT_PATH
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:$CI_COMMIT_TAG .
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:$CI_COMMIT_TAG
+  after_script:
+    - docker run $CI_REGISTRY/$CI_PROJECT_PATH/$CI_PROJECT_NAME:$CI_COMMIT_TAG
+  only:
+    - tags
+
+#deploy production:
+#  image: ellerbrock/alpine-bash-curl-ssl
+#  stage: deploy
+#  when: manual
+#  only:
+#    - tags
+#  script:
+#    - curl -X PUT --

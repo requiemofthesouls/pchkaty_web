@@ -1,7 +1,7 @@
 <div class="uk-margin">
     <article class="uk-article">
 
-        <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+        <h1 class="uk-article-title"><a class="uk-link-reset" href="">Article heading</a></h1>
 
         <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a
                 href="#">Blog</a></p>
