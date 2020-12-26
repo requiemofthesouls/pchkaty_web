@@ -15,6 +15,9 @@ func main() {
 	defer DB.Close()
 
 	r := router.SetupRouter(DB)
+	r.LoadHTMLGlob("templates/**/*")
+	r.Static("/static", "./static")
+
 	_ = r.Run(":8080")
 
 }

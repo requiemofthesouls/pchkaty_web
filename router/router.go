@@ -37,7 +37,9 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	router.PUT("/users/:id", userAPI.Update)
 	router.DELETE("/users/:id", userAPI.Delete)
 
-	router.GET("/", controller.Main)
+	router.GET("/", controller.HomePage)
+	router.GET("/admin", controller.AdminPage)
+	router.GET("/admin/homepage", controller.EditHomePage)
 	router.GET("/ping", controller.Pong)
 
 	return router
