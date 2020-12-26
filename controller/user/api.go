@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
-	"pchkaty_web/backend/db"
+	"pchkaty_web/db"
 	"strconv"
 )
 

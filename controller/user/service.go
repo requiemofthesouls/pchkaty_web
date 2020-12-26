@@ -1,6 +1,6 @@
 package user
 
-import "pchkaty_web/backend/db"
+import "pchkaty_web/db"
 
 type UserService struct {
 	UserRepository UserRepository

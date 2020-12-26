@@ -1,7 +1,7 @@
 package user
 
 import (
-	"pchkaty_web/backend/db"
+	"pchkaty_web/db"
 )
 
 func ToUser(dto UserDTO) db.User {

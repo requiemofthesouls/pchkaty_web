@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http/httptest"
-	"pchkaty_web/backend/config"
-	"pchkaty_web/backend/controller"
-	"pchkaty_web/backend/db"
+	"pchkaty_web/config"
+	"pchkaty_web/controller"
+	"pchkaty_web/db"
 	"testing"
 	//"github.com/stretchr/testify/assert"
 )
@@ -24,7 +24,7 @@ func TestPingRoute(t *testing.T) {
 
 	w := httptest.NewRecorder()
 	c, _ := gin.CreateTestContext(w)
-	controller.GetUser(c)
+	controller.Pong(c)
 
 	fmt.Printf("%s", w.Body.String())
 

@@ -1,12 +1,11 @@
 package db
 
 import (
-	"fmt"
+	_ "github.com/jackc/pgx/v4"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	_ "github.com/lib/pq"
-	"log"
-	"pchkaty_web/backend/config"
+	log "github.com/sirupsen/logrus"
+	"pchkaty_web/config"
 )
 
 func InitDB() *gorm.DB {
@@ -14,9 +13,9 @@ func InitDB() *gorm.DB {
 	db, err := gorm.Open("postgres", config.PostgresAddr)
 
 	if err != nil {
-		panic(fmt.Sprintf("%s | Failed to connect database", config.PostgresAddr))
+		log.Panicf("%s | Failed to connect database | %s", config.PostgresAddr, err)
 	} else {
-		log.Printf("DB Connection ok!")
+		log.Info("DB Connection ok!")
 	}
 
 	db.AutoMigrate(&User{}, &Record{})

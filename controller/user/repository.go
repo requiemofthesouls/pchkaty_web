@@ -2,7 +2,7 @@ package user
 
 import (
 	"github.com/jinzhu/gorm"
-	"pchkaty_web/backend/db"
+	"pchkaty_web/db"
 )
 
 type UserRepository struct {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"pchkaty_web/backend/config"
-	"pchkaty_web/backend/db"
-	"pchkaty_web/backend/router"
+	"pchkaty_web/config"
+	"pchkaty_web/db"
+	"pchkaty_web/router"
 )
 
 func init() {

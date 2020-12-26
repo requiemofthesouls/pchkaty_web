@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	"os"
-	"pchkaty_web/backend/controller"
-	"pchkaty_web/backend/controller/user"
+	"pchkaty_web/controller"
+	"pchkaty_web/controller/user"
 
 	"github.com/getsentry/sentry-go"
 	sentrygin "github.com/getsentry/sentry-go/gin"
